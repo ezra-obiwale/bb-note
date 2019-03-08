@@ -16,6 +16,7 @@
     "register-service-worker": "^1.5.2",
     "vue": "^2.6.8",
     "vue-router": "^3.0.1",
+    "vue-swatches": "^1.0.3",
     "vuex": "^3.0.1",
     "vuex-persist": "^2.0.0"
   },
@@ -34,6 +35,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
+    "surge": "^0.20.1",
     "vue-template-compiler": "^2.5.21"
   }
 }

@@ -15,7 +15,12 @@
         </b-col>
       </masonry>-->
       <b-col v-for="note in notes" :key="note.id" xs="12" md="6" lg="4" class="grid-item">
-        <bb-note :note="note" @edit="edit" @delete="remove"/>
+        <bb-note
+          :note="note"
+          @edit="edit"
+          @delete="remove"
+          @changeColor="changeCardColor(note, $event)"
+        />
       </b-col>
       <b-col cols="12" id="empty-notes" class="text-center" v-if="!notes.length">You have no notes</b-col>
     </b-row>
@@ -101,6 +106,10 @@ export default {
       }
       this.imageFile = null;
       this.$refs.modal.show();
+    },
+    changeCardColor(note, color) {
+      note.color = color
+      this.saveNote(note);
     },
     edit(note) {
       this.modalTitle = "Edit Note";
