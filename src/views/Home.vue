@@ -2,7 +2,8 @@
   <b-container>
     <b-row>
       <b-col cols="12">
-        <h3>BrandBoom Notes
+        <h3>
+          <b-link target="_blank" v-b-tooltip.hover.right="'See on GitHub'" class="link" href="https://github.com/ezra-obiwale/bb-note">BrandBoom Notes</b-link>
           <b-button class="float-right" id="create" @click="add" variant="primary">&plus; New Note</b-button>
         </h3>
         <hr>
@@ -52,7 +53,7 @@
       <b-form-group>
         <b-col cols="12">
           <div class="img-container" v-if="note.img">
-            <b-button class="img-button" variant="danger" @click="resetImage">&times;</b-button>
+            <b-button v-b-tooltip.hover.left="'Remove image'" class="img-button" variant="danger" @click="resetImage">&times;</b-button>
             <b-img :src="note.img" alt fluid-grow/>
           </div>
           <b-form-file
@@ -165,5 +166,8 @@ h3 {
   position: absolute;
   right: 5px;
   top: 5px;
+}
+.link {
+  text-decoration: none;
 }
 </style>

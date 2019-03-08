@@ -6,6 +6,7 @@
         <swatches
           class="float-right border-primary"
           popover-to="left"
+          v-b-tooltip.hover.left="'Change color'"
           :colors="allowedColors"
           show-border
           @input="changeColor"
