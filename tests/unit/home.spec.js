@@ -1,4 +1,4 @@
-import { createLocalVue, mount} from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 import Home from '@/views/Home'
 import store from '@/store'
 import BootstrapVue from 'bootstrap-vue'
@@ -7,7 +7,6 @@ const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 
 describe('Views/Home', () => {
-
   const wrapper = mount(Home, {
     localVue,
     store

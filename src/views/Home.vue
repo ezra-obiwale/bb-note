@@ -72,82 +72,86 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: "HomePage",
-  data() {
+  name: 'HomePage',
+  data () {
     return {
       deleting: null,
       imageFile: null,
       masonryOptions: {
-        itemSelector: ".grid-item"
+        itemSelector: '.grid-item'
       },
-      modalTitle: "New Note",
-      note: {},
+      modalTitle: 'New Note',
+      note: {
+        color: ''
+      },
       working: false
-    };
+    }
   },
   computed: {
-    ...mapState(["notes"]),
-    canSave() {
-      return this.note.title || this.note.text || this.note.img;
+    ...mapState(['notes']),
+    canSave () {
+      return this.note.title || this.note.text || this.note.img
     }
   },
   components: {
-    BbNote: () => import("@/components/Note")
+    BbNote: () => import('@/components/Note')
   },
   methods: {
-    ...mapActions(["saveNote", "deleteNote"]),
-    add() {
-      this.modalTitle = "New Note";
+    ...mapActions(['saveNote', 'deleteNote']),
+    add () {
+      this.modalTitle = 'New Note'
       if (this.note.id) {
-        this.note = {};
+        this.note = {
+          color: ''
+        }
       }
-      this.imageFile = null;
-      this.$refs.modal.show();
+      this.imageFile = null
+      this.$refs.modal.show()
     },
-    changeCardColor(note, color) {
+    changeCardColor (note, color) {
       note.color = color
-      this.saveNote(note);
+      this.saveNote(note)
     },
-    edit(note) {
-      this.modalTitle = "Edit Note";
-      this.note = { ...note };
-      this.imageFile = null;
-      this.$refs.modal.show();
+    edit (note) {
+      this.modalTitle = 'Edit Note'
+      this.note = { ...note }
+      this.imageFile = null
+      this.$refs.modal.show()
     },
-    imageChanged(file) {
+    imageChanged (file) {
       if (!file) {
-        return;
+        return
       }
-      const reader = new FileReader();
-      const self = this;
+      const reader = new FileReader()
+      const self = this
 
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         // get loaded data and render thumbnail.
-        self.$set(self.note, "img", e.target.result);
-      };
+        self.$set(self.note, 'img', e.target.result)
+      }
 
       // read the file as a data URL.
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file)
     },
-    remove(note) {
-      this.deleteNote(note);
-      this.deleting = null;
+    remove (note) {
+      this.deleteNote(note)
+      this.deleting = null
     },
-    resetImage() {
-      this.note.img = null;
-      this.imageFile = null;
+    resetImage () {
+      this.note.img = null
+      this.imageFile = null
     },
-    save() {
+    save () {
       if (!this.canSave) {
-        return;
+        return
       }
-      this.saveNote(this.note);
+      this.saveNote(this.note)
     }
   }
-};
+}
 </script>
 
 <style scoped>

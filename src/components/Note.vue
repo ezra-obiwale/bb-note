@@ -30,60 +30,60 @@
 </template>
 
 <script>
-import Swatches from "vue-swatches";
-import "vue-swatches/dist/vue-swatches.min.css";
+import Swatches from 'vue-swatches'
+import 'vue-swatches/dist/vue-swatches.min.css'
 
 export default {
-  name: "BbNote",
+  name: 'BbNote',
   props: {
     note: {
       type: Object,
       required: true
     }
   },
-  data() {
+  data () {
     return {
-      allowedColors: ["#ffccd5", "#e8deff", "#dcfaf8", "#ffedd1", "burlywood", ""],
+      allowedColors: ['#ffccd5', '#e8deff', '#dcfaf8', '#ffedd1', 'burlywood', ''],
       deleting: false
-    };
+    }
   },
   computed: {
-    bgColor() {
-      return this.note.color || "inherit";
+    bgColor () {
+      return this.note.color || 'inherit'
     },
-    parsedText() {
-      return this.note.text ? this.note.text.replace(/\n/g, "<br />") : "";
+    parsedText () {
+      return this.note.text ? this.note.text.replace(/\n/g, '<br />') : ''
     }
   },
   components: {
     Swatches
   },
   methods: {
-    cancelDelete() {
-      this.deleting = false;
+    cancelDelete () {
+      this.deleting = false
     },
-    cardClicked(e) {
-      if (e.target.tagName !== "BUTTON") {
+    cardClicked (e) {
+      if (e.target.tagName !== 'BUTTON') {
         e.target
-          .closest(".card")
-          .querySelector(".card-text")
-          .classList.toggle("truncate");
+          .closest('.card')
+          .querySelector('.card-text')
+          .classList.toggle('truncate')
       }
     },
-    changeColor(color) {
-      this.$emit("changeColor", color);
+    changeColor (color) {
+      this.$emit('changeColor', color)
     },
-    confirmDelete() {
-      this.deleting = true;
+    confirmDelete () {
+      this.deleting = true
     },
-    edit() {
-      this.$emit("edit", this.note);
+    edit () {
+      this.$emit('edit', this.note)
     },
-    remove() {
-      this.$emit("delete", this.note);
+    remove () {
+      this.$emit('delete', this.note)
     }
   }
-};
+}
 </script>
 
 <style>

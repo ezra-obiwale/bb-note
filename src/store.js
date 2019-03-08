@@ -16,13 +16,13 @@ export default new Vuex.Store({
     notes: []
   },
   mutations: {
-    DELETE_NOTE(state, note) {
+    DELETE_NOTE (state, note) {
       const index = state.notes.findIndex(_note => _note.id === note.id)
       if (index > -1) {
         state.notes.splice(index, 1)
       }
     },
-    SAVE_NOTE(state, note) {
+    SAVE_NOTE (state, note) {
       // editing
       if (note.id) {
         const index = state.notes.findIndex(_note => _note.id === note.id)
@@ -40,13 +40,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    deleteNote({
+    deleteNote ({
       commit
     }, note) {
       // delete on server, then
       commit('DELETE_NOTE', note)
     },
-    saveNote({
+    saveNote ({
       commit
     }, note) {
       // save to server, then

@@ -10,11 +10,9 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest'
   },
-  transformIgnorePatterns: [
-    "node_modules/(?!(babel-jest|jest-vue-preprocessor)/)"
-  ],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
   },
   snapshotSerializers: [
     'jest-serializer-vue'
